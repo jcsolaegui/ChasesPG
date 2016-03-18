@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="whattodo">
+<head>
+	<title>Chases Site</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css" >
+	<link rel="stylesheet" type="text/css" href="resources/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="resources/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+	<script src="resources/jquery-2.2.0.min.js"></script>
+	<script src="resources/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+	
+	<script src="resources/angular.min.js"></script>
+	<script src="resources/jquery-2.2.0.min.js"></script>
+	<script src="javascript/main.js"></script>
+
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">Chases Site</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li class="active"><a href="#">Home</a></li>
+		      <li><a href="#">DO I</a></li>
+		      <li><a href="#">Really Need</a></li>
+		      <li><a href="#">A Navbar</a></li>
+		    </ul>
+		  </div>
+		</nav>
+	</header>
+	
+		<div ng-controller="doingwhat as what" class="container fill" id="main_wrapper">
+			<div class="jumbotron" id="input">
+				<label>What you be doing brah</label>
+				<div class="row">
+				  <div class="col-lg-6">
+				    <div class="input-group">
+				      <div class="input-group-btn">
+				        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
+				        <ul class="dropdown-menu">
+				          <li><a href="#">{{what.test}}</a></li>
+				          <li><a href="#">Another action</a></li>
+				          <li><a href="#">Something else here</a></li>
+				          <li role="separator" class="divider"></li>
+				          <li><a href="#">Separated link</a></li>
+				        </ul>
+				      </div><!-- /btn-group -->
+				      <input type="text" class="form-control" aria-label="...">
+				    </div><!-- /input-group -->
+				  </div><!-- /.col-lg-6 -->
+			</div>
+		</div>
+	</div>
+	<footer class="footer"> <div class="container"> <p class="text-muted">All Things on this site shouldn't be used by normal humans</p></div></footer>
+</body>
+</html>
