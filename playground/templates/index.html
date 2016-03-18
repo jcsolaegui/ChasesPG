@@ -33,24 +33,20 @@
 		<div class="container fill" id="main_wrapper">
 			<div class="jumbotron" id="input">
 				<label>What you be doing brah</label>
-				<div class="row">
-				  <div class="col-lg-6">
-				    <div class="input-group">
-				      <div class="input-group-btn">
-				        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
-				        <ul class="dropdown-menu">
-				          <li><a href="#"></a></li>
-				          <li><a href="#">Another action</a></li>
-				          <li><a href="#">Something else here</a></li>
-				          <li role="separator" class="divider"></li>
-				          <li><a href="#">Separated link</a></li>
-				        </ul>
-				      </div><!-- /btn-group -->
-				      <input type="text" class="form-control" aria-label="...">
-				    </div><!-- /input-group -->
-				  </div><!-- /.col-lg-6 -->
+				<form method="post">
+					<input name="activity" type="string" value="NOOo"> </input>
+					<input type="submit"></input>
+				</form>
 			</div>
+			{% for activity in activities %}
+				<div style="margin: 1px" class="jumbotron col-md-2" id="input">
+					
+						{{activity.activity}}
+					
+				</div>
+			{% endfor %}
 		</div>
+
 	</div>
 	<footer class="footer"> <div class="container"> <p class="text-muted">All Things on this site shouldn't be used by normal humans</p></div></footer>
 </body>

@@ -27,10 +27,31 @@ class MainHandler(webapp2.RequestHandler):
 	def write(self, *a, **kw):
 		self.response.out.write(*a, **kw)
 
+	def render(self, template, **params):
+		t = JINJA_ENVIRONMENT.get_template(template);
+		self.write(t.render(params));
+
+class MainPage(MainHandler):	
 	def get(self):
-		t = JINJA_ENVIRONMENT.get_template("index.html");
-		self.write(t.render({}));
+		self.renderFront();
+
+	def renderFront(self):		
+		print 'shit'
+		acts = db.GqlQuery("select * from Activity ORDER BY date desc")
+		self.render("index.html", activities = acts)
+		
+
+	def post(self):
+		requestActivity = self.request.get('activity');
+		if (requestActivity):
+			activity = Activity(activity = requestActivity)
+			activity.put()
+			self.redirect('/');
+
+class Activity(db.Model):
+	activity = db.TextProperty(required = True)
+	date = db.DateTimeProperty(auto_now_add = True)
 
 app = webapp2.WSGIApplication([
-	('/', MainHandler)
+	('/', MainPage)
 ], debug=True)
