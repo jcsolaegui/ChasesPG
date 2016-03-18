@@ -15,11 +15,22 @@
 # limitations under the License.
 #
 import webapp2
+import os
+import jinja2
 from google.appengine.ext import db
+
+template_dir = os.path.join(os.path.dirname(__file__), 'templates')
+print template_dir
+JINJA_ENVIRONMENT = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape=True)
+
 class MainHandler(webapp2.RequestHandler):
-    def get(self):
-        self.response.write('Hello world!')
+	def write(self, *a, **kw):
+		self.response.out.write(*a, **kw)
+
+	def get(self):
+		t = JINJA_ENVIRONMENT.get_template("index.html");
+		self.write(t.render({}));
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+	('/', MainHandler)
 ], debug=True)
