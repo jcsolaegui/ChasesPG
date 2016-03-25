@@ -1,0 +1,28 @@
+telnet mx1.service-now.com 25
+HELO service-now.com
+MAIL FROM: lott.caskey@servicenow.com
+RCPT TO: emplcaskey3@service-now.com
+DATA
+From: "Lott Caskey" <lott.caskey@servicenow.com>
+To: "'emplcaskey3@service-now.com'" <emplcaskey3@service-now.com>
+Subject: Duplicate email test 20160325
+Date: Mon, 14 Mar 2016 20:34:28 +0000
+
+testing 1234
+.
+QUIT
+
+
+telnet 192.168.0.42 25
+HELO example.com
+MAIL FROM: fred.luddy@example.com
+RCPT TO: fred.luddy@example.com
+DATA
+From: fred.luddy@example.com
+To: fred.luddy@example.com
+Subject: Duplicate email test 20160320
+Date: Mon, 14 Mar 2016 20:34:28 +0000
+
+testing 1234
+.
+QUIT

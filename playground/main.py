@@ -19,9 +19,8 @@ import os
 import jinja2
 from google.appengine.ext import db
 
-template_dir = os.path.join(os.path.dirname(__file__), 'templates')
-print template_dir
-JINJA_ENVIRONMENT = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape=True)
+TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
+JINJA_ENVIRONMENT = jinja2.Environment(loader = jinja2.FileSystemLoader(TEMPLATE_DIR), autoescape=True)
 
 class MainHandler(webapp2.RequestHandler):
 	def write(self, *a, **kw):
@@ -36,7 +35,6 @@ class MainPage(MainHandler):
 		self.renderFront();
 
 	def renderFront(self):		
-		print 'shit'
 		acts = db.GqlQuery("select * from Activity ORDER BY date desc")
 		self.render("index.html", activities = acts)
 		
@@ -46,7 +44,6 @@ class MainPage(MainHandler):
 		if (requestActivity):
 			activity = Activity(activity = requestActivity)
 			activity.put()
-			self.redirect('/');
 
 class Activity(db.Model):
 	activity = db.TextProperty(required = True)
